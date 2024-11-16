@@ -110,7 +110,7 @@ const Chat = () => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer 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`,
           },
         }
       );
