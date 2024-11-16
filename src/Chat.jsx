@@ -110,7 +110,7 @@ const Chat = () => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer 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`,
           },
         }
       );
@@ -120,7 +120,8 @@ const Chat = () => {
       await addDoc(collection(db, "shared_chatroom"), {
         text: gptMessage,
         sender: "GPT",
-        senderAvatar: "https://i.imgur.com/rFbS5ms.png", // Replace with your GPT avatar image URL
+        senderAvatar:
+          "https://w7.pngwing.com/pngs/150/625/png-transparent-artificial-intelligence-ai-chip-computer-technology-artificial-intelligence-icon.png", // Replace with your GPT avatar image URL
         toGPT: false,
         createdAt: new Date(),
       });
@@ -138,13 +139,16 @@ const Chat = () => {
         </div>
 
         {/* Active Users Tab */}
-        <div className="active-users-tab" ref={chatBodyRef}>
+        <div className="active-users-tab">
           <h4>Active Users</h4>
           <ul className="active-users-list">
             {activeUsers.map((user, index) => (
               <li key={index} className="active-user-item">
                 <img
-                  src={user.senderAvatar}
+                  src={
+                    user.senderAvatar ||
+                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  }
                   alt={`${user.displayName}'s avatar`}
                   className="avatar"
                 />
@@ -168,7 +172,9 @@ const Chat = () => {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`message ${msg.toGPT ? "sent" : "received"}`}
+              className={`message ${
+                msg.sender === user.displayName ? "sent" : "received"
+              } ${msg.toGPT ? "to-gpt" : ""}`}
             >
               <img
                 src={msg.senderAvatar}
@@ -182,6 +188,7 @@ const Chat = () => {
             </div>
           ))}
         </div>
+        {/* Message Input */}
         <div className="message-input">
           <input
             type="text"
@@ -197,9 +204,7 @@ const Chat = () => {
             />
             GPT
           </label>
-          <button className="send-button" onClick={sendMessage}>
-            Send
-          </button>
+          <button onClick={sendMessage}>Send</button>
         </div>
       </div>
     </div>
