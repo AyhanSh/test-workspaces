@@ -236,7 +236,7 @@ button:focus-visible {
     padding: 0;
     margin: 0;
 }
-
+/* Chat.css */
 .active-user-item {
     display: flex;
     align-items: center;
@@ -253,26 +253,55 @@ button:focus-visible {
     border-bottom: none;
 }
 
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
 .user-info {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .user-info strong {
     font-size: 14px;
     color: #333;
+    display: flex;
+    align-items: center;
 }
 
 .user-info p {
     font-size: 12px;
     color: #666;
+}
+
+.online-status {
+    width: 8px;
+    height: 8px;
+    background-color: #03bb09;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.90);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.4);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(0.90);
+        opacity: 1;
+    }
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .message-content {

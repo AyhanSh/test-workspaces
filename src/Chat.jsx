@@ -144,16 +144,12 @@ const Chat = () => {
           <ul className="active-users-list">
             {activeUsers.map((user, index) => (
               <li key={index} className="active-user-item">
-                <img
-                  src={
-                    user.senderAvatar ||
-                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                  }
-                  alt={`${user.displayName}'s avatar`}
-                  className="avatar"
-                />
                 <div className="user-info">
-                  <strong>{user.displayName}</strong>
+                  <strong>
+                    <span className="online-status"></span>
+                    
+                    {user.displayName}
+                  </strong>
                   <p>{user.email}</p>
                 </div>
               </li>
